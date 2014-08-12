@@ -9,7 +9,7 @@ This is useful in services like AWS that return uppercase properties, breaking c
 # usage
 
 ```
-var objectKeysToCase = require('object-keys-to-lowercase');
+var objectKeysToCase = require('object-keys-to-case');
 var camelCase = require('camel-case');
 var foo = {Bar: 'buz'};
 objectKeysToCase(foo, camelCase);
