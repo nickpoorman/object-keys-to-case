@@ -1,11 +1,14 @@
 module.exports = function(obj, caseFn) {
   var keys = Object.keys(obj);
   var n = keys.length;
+  var key;
+  var keyInCase;
   while (n--) {
-    var key = keys[n];
-    if (key === (lowKey = key.toLowerCase())) continue;
-    obj[caseFn(key)] = obj[key]
-    delete obj[key]
+    key = keys[n];
+    keyInCase = caseFn(key);
+    if (key === keyInCase) continue;
+    obj[keyInCase] = obj[key];
+    delete obj[key];
   }
   return obj;
 }

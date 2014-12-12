@@ -1,5 +1,5 @@
 var should = require('should');
-var objectKeysToLowercase = require('..');
+var objectKeysToCase = require('..');
 var camelCase = require('camel-case');
 
 describe('object-keys-to-case', function() {
@@ -8,7 +8,21 @@ describe('object-keys-to-case', function() {
       Bar: 'buz',
       PingPong: 'Woo'
     };
-    objectKeysToLowercase(foo, camelCase);
+    objectKeysToCase(foo, camelCase);
     foo.should.have.keys('bar', 'pingPong');
+  });
+
+  it('should turn all the keys to lowercase', function() {
+    var foo = {
+      Bar: 'buz',
+      PingPong: 'Woo'
+    };
+
+    function toLowerCase(str) {
+      return str.toLowerCase();
+    }
+
+    objectKeysToCase(foo, toLowerCase);
+    foo.should.have.keys('bar', 'pingpong');
   })
 })
